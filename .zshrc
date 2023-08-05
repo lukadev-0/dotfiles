@@ -117,3 +117,5 @@ esac
 # pnpm end
 # Turso
 export PATH="/home/luka/.turso:$PATH"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
