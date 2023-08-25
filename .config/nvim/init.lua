@@ -174,6 +174,10 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  {
+    "folke/neoconf.nvim"
+  },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -436,6 +440,9 @@ require('neodev').setup()
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+-- Setup neoconf
+require("neoconf").setup({})
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
