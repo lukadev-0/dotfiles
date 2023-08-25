@@ -60,6 +60,7 @@
         "format": "{icon}",
         "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
         "tooltip-format-disconnected": "Disconnected",
+        "on-click": "nm-connection-editor",
         "format-icons": {
             "wifi": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
             "ethernet": "󱘖",
