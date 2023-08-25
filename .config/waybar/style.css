@@ -1,14 +1,84 @@
+@import "mocha.css";
+
 window#waybar {
   all: unset;
   font-family: Inter, sans-serif;
-  font-size: 14px;
-  background: rgba(120, 120, 120, 0.1);
+  font-size: 15px;
 }
 
 window#waybar > box {
-  padding: 0 32px;
+  padding: 8px 24px 0px;
 }
 
-widget label {
-  padding: 8px 8px;
+#workspaces {
+  background: rgba(30, 30, 46, 0.5);
+  border-radius: 8px;
+  padding: 0 8px;
+}
+
+#workspaces button {
+  border-radius: 0;
+  padding: 0;
+  min-width: 24px;
+  min-height: 24px;
+  border-bottom: 2px solid transparent;
+}
+
+#workspaces button:hover {
+  border-color: @surface1;
+}
+
+#workspaces button.active {
+  border-color: @blue;
+  color: #fff;
+}
+
+#performance,
+#other,
+#tray,
+#clock,
+#window {
+  margin-right: 4px;
+  padding: 6px 12px;
+  background: rgba(30, 30, 46, 0.5);
+  border-radius: 8px;
+}
+
+#window {
+  background: @blue;
+  color: @mantle;
+}
+
+window#waybar.empty #window {
+  padding: 0;
+}
+
+#clock {
+  font-weight: 600;
+  color: @text;
+  background: @base;
+}
+
+#cpu {
+  margin-right: 10px;
+  color: @teal;
+  min-width: 40px;
+}
+
+#memory {
+  color: @green;
+  min-width: 40px;
+}
+
+#pulseaudio {
+  color: @blue;
+  font-size: 18px;
+  min-width: 16px;
+}
+
+#network {
+  margin-right: 8px;
+  color: @lavender;
+  font-size: 18px;
+  min-width: 16px;
 }
