@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/.bin:/usr/local/bin:$PATH
+export PATH=$HOME/.aftman/bin:$HOME/.bin:/usr/local/bin:$PATH
 export EDITOR=nvim
 
 alias vim=nvim
@@ -124,3 +124,10 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export QT_QPA_PLATFORMTHEME=qt5ct
 
 export GPG_TTY=$(tty)
+
+# bun completions
+[ -s "/home/luka/.bun/_bun" ] && source "/home/luka/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
