@@ -4,9 +4,10 @@
     "spacing": 4,
 
     // Modules Left
-    "modules-left": ["wlr/workspaces"],
-    "wlr/workspaces": {
+    "modules-left": ["hyprland/workspaces"],
+    "hyprland/workspaces": {
         "on-click": "activate",
+        "all-outputs": true,
         "format": "{icon}",
         "format-icons": {
             "1": "1",
