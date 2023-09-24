@@ -175,7 +175,11 @@ require('lazy').setup({
   },
 
   {
-    "folke/neoconf.nvim"
+    "folke/neoconf.nvim",
+  },
+
+  {
+    "elkowar/yuck.vim",
   },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart

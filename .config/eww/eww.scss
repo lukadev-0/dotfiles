@@ -1,0 +1,198 @@
+/* Catppuccin Mocha */
+$rosewater: #f5e0dc;
+$flamingo: #f2cdcd;
+$pink: #f5c2e7;
+$mauve: #cba6f7;
+$red: #f38ba8;
+$maroon: #eba0ac;
+$peach: #fab387;
+$yellow: #f9e2af;
+$green: #a6e3a1;
+$teal: #94e2d5;
+$sky: #89dceb;
+$sapphire: #74c7ec;
+$blue: #89b4fa;
+$lavender: #b4befe;
+$text: #cdd6f4;
+$subtext1: #bac2de;
+$subtext0: #a6adc8;
+$overlay2: #9399b2;
+$overlay1: #7f849c;
+$overlay0: #6c7086;
+$surface2: #585b70;
+$surface1: #45475a;
+$surface0: #313244;
+$base: #1e1e2e;
+$mantle: #181825;
+$crust: #11111b;
+
+/* Base */
+* {
+  all: unset;
+}
+
+/* Separator */
+.sep {
+  color: $surface0;
+}
+
+/* Scale */
+scale trough {
+  background-color: $surface0;
+  border-radius: 16px;
+  min-height: 8px;
+  min-width: 70px;
+
+  highlight {
+    background-color: $blue;
+    border-radius: 16px;
+  }
+}
+
+/* Tooltips */
+tooltip.background {
+  background-color: rgba(10, 10, 20, 0.8);
+  border-radius: 8px;
+  font-size: 12px;
+  color: #bfc9db;
+}
+
+tooltip label {
+  color: $text;
+  margin: 2px 6px;
+}
+
+/* Calendar */
+.calendar {
+  padding: 8px;
+  background: $mantle;
+  border-radius: 16px;
+  border: 1px solid $surface0;
+  color: $text;
+}
+
+calendar {
+  &.header {
+    color: $text;
+  }
+
+  &.button {
+    color: $blue;
+  }
+
+  &.highlight {
+    color: $subtext0;
+  }
+
+  &:selected {
+    color: $crust;
+    background-color: $blue;
+    border-radius: 4px;
+  }
+
+  &:indeterminate {
+    color: $overlay1;
+  }
+}
+
+/* Bar */
+.bar {
+  margin: 0 20px;
+  padding: 6px 16px;
+  background: $crust;
+
+  border: 1px solid $surface0;
+  border-top: none;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+/* Left */
+.left {
+  .i-use-arch-btw {
+    font-size: 20;
+    color: $blue;
+  }
+
+  .window_title_module {
+    color: $text;
+    font-weight: 600;
+  }
+}
+
+/* Middle */
+.middle {
+  .workspaces-module {
+    .workspace-entry {
+      font-size: 20;
+
+      &.occupied {
+        color: $text;
+      }
+
+      &.empty {
+        color: $overlay0;
+      }
+
+      &.current {
+        color: $blue;
+      }
+    }
+  }
+}
+
+/* Right */
+.right {
+  .control-module {
+    color: $blue;
+    font-size: 16px;
+
+    .audio-controls {
+      padding-left: 6px;
+      padding-right: 6px;
+
+      label {
+        font-size: 12;
+        font-weight: 600;
+        min-width: 40px;
+      }
+    }
+  }
+
+  .perf-module {
+    progressbar trough {
+      background-color: $surface0;
+      min-width: 8px;
+      min-height: 2px;
+    }
+
+    progressbar progress {
+      min-height: 2px;
+    }
+
+    .label {
+      font-family: monospace;
+      font-size: 12px;
+      color: $text;
+      margin-top: -1px;
+    }
+
+    .cpu {
+      font-weight: 600;
+      progressbar progress {
+        background-color: $blue;
+      }
+    }
+
+    .ram {
+      font-weight: 600;
+      progressbar progress {
+        background-color: $green;
+      }
+    }
+  }
+
+  .time-module {
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,151 @@
+;; Main
+(defwidget main []
+  (centerbox :class "bar" :orientation "h"
+    (left)
+    (middle)
+    (right)
+  )
+)
+
+;; Separator
+(defwidget sep []
+  (box :class "sep" "|")
+)
+
+;; Left
+(defwidget left []
+  (box :class "left" :halign "start" :space-evenly false :spacing 8
+    (i_use_arch_btw)
+    (window_title_module)
+  )
+)
+
+(defwidget i_use_arch_btw []
+  (box :class "i-use-arch-btw" "󰣇")
+)
+
+(deflisten window :initial "..." "sh ~/.config/eww/scripts/get-window-title")
+(defwidget window_title_module []
+  (box :class "window_title_module"
+    (label :limit-width 64 :text "${window ?: ""}")
+  )
+)
+
+;; Middle
+(defwidget middle []
+  (box :class "middle" :halign "center"
+    (workspaces-module)
+  )
+)
+
+(deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
+(deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
+(defwidget workspaces-module []
+  (eventbox :onscroll "bash ~/.config/eww/scripts/change-active-workspace {} ${current_workspace}" :class "workspaces-module"
+    (box :spacing 4
+      (for workspace in workspaces
+        (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
+          (box
+            :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
+            "${workspace.id == current_workspace ? "" : ""}"
+          )
+        )
+      )
+    )
+  )
+)
+
+;; Right
+(defwidget right []
+  (box :class "right" :halign "end" :spacing 8 :space-evenly false
+    (control-module)
+    (sep)
+    (perf-module)
+    (sep)
+    (time-module)
+  )
+)
+
+(defpoll volume :interval "1s" "amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
+(defpoll audio_enabled :interval "1s" "amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' -vn=2 '{ print $4 }'")
+(defvar audio_controls_visible false)
+(defpoll wifi_icon :interval "5s" "scripts/wifi")
+(defwidget control-module []
+  (box :class "control-module" :spacing 6 :space-evenly false
+    ;; Audio
+    (eventbox :class "audio" :width 14 :onhover "eww update audio_controls_visible=true" :onhoverlost "eww update audio_controls_visible=false"
+      (box :space-evenly false
+        (button :onclick "amixer -D pulse sset Master ${audio_enabled == "on" ? "mute" : "unmute"}"
+          "${
+            audio_enabled == "on" ? (
+              volume >= 50
+              ? "󰕾"
+              : volume > 0
+              ? "󰖀"
+              : "󰕿"
+            ) : "󰝟"
+          }"
+        )
+
+        (revealer :reveal audio_controls_visible :class "audio-controls" :transition "slideleft"
+          (box :space-evenly false
+            (scale :width 50 :min 0 :max 100 :value volume :onchange "amixer -D pulse sset Master {}%" )
+            (label :text "${volume}%")
+          )
+        )
+      )
+    )
+    
+    ;; Network
+    (button :class "network" :width 14 :onclick "hyprctl dispatch exec [float] nm-connection-editor"
+      wifi_icon
+    )
+  )
+)
+
+(defwidget perf-module []
+  (box :class "perf-module" :spacing 8
+    (box :class "cpu" :space-evenly false :orientation "v" :valign "center" :tooltip "CPU ${round(EWW_CPU.avg, 0)}%"
+      (label :class "label" :text "CPU")
+      (progress :value {EWW_CPU.avg})
+    )
+
+    (box :class "ram" :space-evenly false :orientation "v" :valign "center" :tooltip "RAM ${round(EWW_RAM.used_mem_perc, 0)}%"
+      (label :class "label" :text "RAM")
+      (progress :value {EWW_RAM.used_mem_perc})
+    )
+  )
+)
+
+(defwidget time-module []
+  (button :class "time-module" :onclick "eww open --toggle calendar"
+    "${formattime(EWW_TIME, "%H:%M")}"
+  )
+)
+
+;; Windows
+(defwindow main
+  :monitor 0
+  :geometry (geometry
+    :x "0%"
+    :y "0%"
+    :width "100%"
+    :height "36px"
+    :anchor "top center"
+  )
+  :stacking "fg"
+  :exclusive true
+(main))
+
+(defwindow calendar
+  :monitor 0
+  :geometry (geometry
+    :x "20px"
+    :y "8px"
+    :width "320px"
+    :height "200px"
+    :anchor "top right"
+  )
+  :stacking "fg"
+  :exclusive false
+(box :class "calendar" (calendar)))
