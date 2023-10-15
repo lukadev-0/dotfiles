@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.aftman/bin:$HOME/.bin:/usr/local/bin:$PATH
 export EDITOR=nvim
+export GTK_THEME=Catppuccin-Mocha-Standard-Blue-Dark
 
 alias vim=nvim
 
