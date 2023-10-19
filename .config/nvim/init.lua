@@ -101,12 +101,12 @@ require('lazy').setup({
     priority = 1000,
     config = function()
       require('catppuccin').setup {
-        flavour = "mocha",
+        flavour = 'mocha',
         transparent_background = true,
 
         dim_inactive = {
           enabled = true,
-          shade = "dark",
+          shade = 'dark',
           percentage = 0.15,
         },
 
@@ -140,7 +140,7 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
-    main = "ibl",
+    main = 'ibl',
     opts = {
       indent = { char = '┊' },
     },
@@ -175,12 +175,14 @@ require('lazy').setup({
   },
 
   {
-    "folke/neoconf.nvim",
+    'folke/neoconf.nvim',
   },
 
   {
-    "elkowar/yuck.vim",
+    'elkowar/yuck.vim',
   },
+
+  { 'lopi-py/luau-lsp.nvim' },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
@@ -436,6 +438,23 @@ local servers = {
       telemetry = { enable = false },
     },
   },
+
+  luau_lsp = {
+    ['luau-lsp'] = {
+      sourcemap = {
+        enable = true,       -- enable sourcemap generation
+        autogenerate = true, -- auto generate sourcemap with rojo's sourcemap watcher
+      },
+      types = {
+        roblox = true, -- enable roblox api
+      },
+      completion = {
+        imports = {
+          enabled = true,
+        },
+      },
+    },
+  },
 }
 
 -- Setup neovim lua configuration
@@ -446,7 +465,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Setup neoconf
-require("neoconf").setup({})
+require('neoconf').setup {}
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
@@ -462,6 +481,18 @@ mason_lspconfig.setup_handlers {
       on_attach = on_attach,
       settings = servers[server_name],
     }
+  end,
+
+  luau_lsp = function()
+    require('luau-lsp').setup {
+      server = {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = servers.luau_lsp,
+      },
+    }
+
+    require('luau-lsp').treesitter()
   end,
 }
 
