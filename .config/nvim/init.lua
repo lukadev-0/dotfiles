@@ -455,6 +455,14 @@ local servers = {
       },
     },
   },
+
+  rust_analyzer = {
+    ["rust-analyzer"] = {
+      procMacro = {
+        enable = true
+      }
+    }
+  }
 }
 
 -- Setup neovim lua configuration
