@@ -1,0 +1,108 @@
+@use "catppuccin";
+
+.bar {
+  background: fade-out(catppuccin.$crust, 0.4);
+  border-bottom: 1px solid fade-out(catppuccin.$surface1, 0.4);
+  font-size: 12px;
+
+  &-content {
+    padding: 4px;
+    min-height: 28px;
+  }
+
+  &-button {
+    border-radius: 6px;
+    transition: background 200ms;
+
+    &:hover {
+      background: fade-out(catppuccin.$surface0, 0.6);
+    }
+  }
+
+  &-arch-icon {
+    color: catppuccin.$blue;
+    font-size: 16px;
+    min-width: 28px;
+
+    label {
+      margin-left: -2px;
+    }
+  }
+
+  &-workspaces {
+    margin-left: 8px;
+
+    &-button {
+      min-width: 20px;
+
+      > * {
+        min-width: 6px;
+        min-height: 6px;
+        background-color: catppuccin.$surface0;
+        border-radius: 99px;
+        transition:
+          background-color 400ms,
+          min-width 200ms;
+        transition-timing-function: ease-out;
+
+        &.occupied {
+          background-color: catppuccin.$text;
+          min-height: 8px;
+          min-width: 8px;
+        }
+
+        &.active {
+          background-color: catppuccin.$blue;
+          min-height: 8px;
+          min-width: 18px;
+        }
+      }
+
+      &:hover > *:not(.active) {
+        &:not(.occupied) {
+          min-width: 10px;
+          background-color: catppuccin.$surface2;
+        }
+
+        &.occupied {
+          min-width: 12px;
+          background-color: catppuccin.$text;
+        }
+      }
+    }
+  }
+
+  &-time {
+    font-weight: 600;
+    min-width: 48px;
+  }
+
+  &-system-indicators {
+    padding: 0 8px;
+
+    &-icon {
+      margin-right: 6px;
+    }
+
+    & > * > :last-child &-icon {
+      margin-right: 0;
+    }
+
+    &.active {
+      background: fade-out(catppuccin.$surface1, 0.6);
+    }
+  }
+
+  &-system-tray {
+    padding: 0 4px;
+
+    &-item {
+      min-width: 20px;
+    }
+  }
+
+  &-power {
+    color: catppuccin.$red;
+    min-width: 28px;
+  }
+}

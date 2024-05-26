@@ -1,0 +1,109 @@
+@use "catppuccin";
+
+.control-center {
+  background: fade-out(catppuccin.$base, 0.2);
+  border-radius: 16px;
+  border: 1px solid fade-out(catppuccin.$surface2, 0.4);
+  font-size: 12px;
+
+  &-content {
+    padding: 16px;
+    min-width: 280px;
+  }
+
+  &-settings-header {
+    font-weight: 600;
+
+    &-back {
+      min-width: 20px;
+      min-height: 20px;
+      border-radius: 6px;
+
+      &:hover {
+        background: fade-out(catppuccin.$surface1, 0.6);
+      }
+    }
+  }
+
+  &-toggle-control {
+    button {
+      background: fade-out(catppuccin.$surface2, 0.5);
+      padding: 8px;
+      transition:
+        background 200ms,
+        opacity 200ms;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    &-separator {
+      background: catppuccin.$surface1;
+      min-width: 1px;
+    }
+
+    &-toggle {
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+
+      image {
+        font-size: 14px;
+      }
+
+      label {
+        font-weight: 500;
+      }
+    }
+
+    &-arrow {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+
+    &.active &-separator {
+      background: fade-out(catppuccin.$blue, 0.3);
+    }
+
+    &.active {
+      button {
+        background: catppuccin.$blue;
+        color: catppuccin.$mantle;
+
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+
+  &-volume-slider {
+    button {
+      min-width: 28px;
+      min-height: 28px;
+      border-radius: 6px;
+      transition: background 200ms;
+
+      &:hover {
+        background: fade-out(catppuccin.$surface1, 0.6);
+      }
+    }
+
+    scale {
+      padding: 16px 0;
+      padding-right: 18px;
+      padding-left: 16px;
+    }
+  }
+
+  &-audio-settings {
+    padding: 0 8px;
+    min-height: 28px;
+    border-radius: 6px;
+    color: catppuccin.$subtext1;
+
+    &:hover {
+      background: fade-out(catppuccin.$surface1, 0.6);
+    }
+  }
+}

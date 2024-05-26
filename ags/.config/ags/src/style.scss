@@ -1,0 +1,12 @@
+@use "catppuccin";
+
+@use "widgets/bar";
+@use "widgets/control-center";
+
+window {
+  color: catppuccin.$text;
+}
+
+button {
+  all: unset;
+}

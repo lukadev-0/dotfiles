@@ -1,0 +1,9 @@
+\.gitignore
+\.git
+\.git
+
+^/README.*
+^/LICENSE.*
+^/COPYING
+
+ags/types/*
