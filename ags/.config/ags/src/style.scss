@@ -2,6 +2,7 @@
 
 @use "widgets/bar";
 @use "widgets/control-center";
+@use "widgets/app-launcher";
 
 window {
   color: catppuccin.$text;

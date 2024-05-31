@@ -6,7 +6,9 @@ const network = await Service.import("network");
 const bluetooth = await Service.import("bluetooth");
 const hyprland = await Service.import("hyprland");
 
-const currentMenu = Variable("control-center");
+const currentMenu = Variable<
+  "control-center" | "wifi-settings" | "bluetooth-settings"
+>("control-center");
 
 App.connect("window-toggled", (_, name: string, visible: boolean) => {
   if (name === "control-center" && !visible)
@@ -147,6 +149,12 @@ export function ControlCenter() {
           className: "control-center-content",
           vertical: true,
           children: [SettingsHeader("Wi-Fi"), WifiSettings()],
+        }),
+
+        "bluetooth-settings": Widget.Box({
+          className: "control-center-content",
+          vertical: true,
+          children: [SettingsHeader("Bluetooth")],
         }),
       },
       shown: currentMenu.bind(),

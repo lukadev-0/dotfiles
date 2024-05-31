@@ -1,0 +1,59 @@
+@use "catppuccin";
+
+.app-launcher {
+  background: fade-out(catppuccin.$base, 0.2);
+  border-radius: 16px;
+  border: 1px solid fade-out(catppuccin.$surface2, 0.4);
+  font-size: 14px;
+
+  &-content {
+    min-width: 400px;
+  }
+
+  &-search {
+    background: none;
+    padding: 14px 22px;
+
+    color: catppuccin.$text;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    image {
+      color: catppuccin.$subtext1;
+    }
+  }
+
+  &-divider {
+    min-height: 1px;
+    background: fade-out(catppuccin.$surface2, 0.4);
+  }
+
+  &-scroll {
+    min-height: 360px;
+  }
+
+  &-list {
+    padding: 14px;
+  }
+
+  &-item {
+    padding: 8px;
+    border-radius: 6px;
+
+    &:hover {
+      background: fade-out(catppuccin.$surface0, 0.4);
+    }
+
+    image {
+      min-width: 16px;
+    }
+
+    &:first-child {
+      background: catppuccin.$blue;
+      color: catppuccin.$crust;
+      font-weight: 500;
+    }
+  }
+}

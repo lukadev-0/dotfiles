@@ -7,5 +7,6 @@ export function LauncherButton() {
     child: Widget.Label({
       label: ARCH_ICON,
     }),
+    on_clicked: () => App.toggleWindow("app-launcher"),
   });
 }
