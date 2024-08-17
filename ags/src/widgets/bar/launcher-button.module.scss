@@ -1,0 +1,12 @@
+@use "colors";
+
+.launcher {
+  composes: barButton from "./index.module.scss";
+  min-width: 24px;
+  font-size: 16px;
+
+  label {
+    color: colors.$accent;
+    margin-left: -5px;
+  }
+}

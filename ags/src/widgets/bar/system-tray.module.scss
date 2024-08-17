@@ -1,0 +1,4 @@
+.item {
+  composes: barButton from "./index.module.scss";
+  min-width: 20px;
+}
