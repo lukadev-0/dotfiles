@@ -53,10 +53,6 @@
 
   services = {
     flatpak.enable = true;
-    xserver = {
-      enable = true;
-      exportConfiguration = true;
-    };
     tailscale = {
       enable = true;
       useRoutingFeatures = "server";
