@@ -42,12 +42,13 @@
     })
   ];
 
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
+
   programs = {
     zsh.enable = true;
-    hyprland = {
-      enable = true;
-      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    };
+    hyprland.enable = true;
     nix-ld.enable = true;
   };
 
@@ -64,7 +65,6 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
   users.users.luka = {

@@ -30,9 +30,9 @@ in
   ];
 
   home.pointerCursor = {
-     package = pkgs.adwaita-icon-theme;
-     name = "Adwaita";
-     size = 24;
+    package = pkgs.adwaita-icon-theme;
+    name = "Adwaita";
+    size = 24;
   };
 
   gtk = {
