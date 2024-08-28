@@ -32,15 +32,16 @@
     gcc
   ];
 
-  fonts.packages = with pkgs; [
-    geist-font
-    twemoji-color-font
-    noto-fonts
-    noto-fonts-cjk
-    (nerdfonts.override {
-      fonts = [ "FiraCode" ];
-    })
-  ];
+  fonts = {
+    fontDir.enable = true;
+    packages = with pkgs; [
+      geist-font
+      twemoji-color-font
+      noto-fonts
+      noto-fonts-cjk
+      (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    ];
+  };
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
@@ -50,9 +51,25 @@
     zsh.enable = true;
     hyprland.enable = true;
     nix-ld.enable = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+      pinentryPackage = pkgs.pinentry-qt;
+    };
   };
 
   services = {
+    printing.enable = true;
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+    pipewire = {
+      enable = true;
+      pulse.enable = true;
+    };
+
     flatpak.enable = true;
     tailscale = {
       enable = true;
@@ -60,8 +77,15 @@
     };
   };
 
-  security.rtkit.enable = true;
-  security.polkit.enable = true;
+  security = {
+    rtkit.enable = true;
+    polkit.enable = true;
+  };
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
 
   xdg.portal = {
     enable = true;
