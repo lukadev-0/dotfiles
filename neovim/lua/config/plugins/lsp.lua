@@ -21,7 +21,7 @@ return {
                         require("typescript-tools").setup(config)
                     end,
                     config = {},
-                }
+                },
             },
         },
         config = function(_, opts)

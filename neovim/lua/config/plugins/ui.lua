@@ -22,10 +22,10 @@ return {
                 "rcarriga/nvim-notify",
                 opts = {
                     on_open = function(win)
-                        vim.api.nvim_set_option_value("winblend", 0, { win = win  })
+                        vim.api.nvim_set_option_value("winblend", 0, { win = win })
                     end,
                 },
-            }
+            },
         },
         opts = {
             views = {
@@ -56,7 +56,7 @@ return {
                     { "{data.progress.title} ", hl_group = "NoiceLspProgressTitle" },
                     { "{data.progress.client} ", hl_group = "NoiceLspProgressClient" },
                 },
-            }
+            },
         },
-    }
+    },
 }
