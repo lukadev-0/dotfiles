@@ -9,10 +9,19 @@ return {
             "williamboman/mason.nvim",
             "neovim/nvim-lspconfig",
             "saghen/blink.cmp",
+            "pmizio/typescript-tools.nvim",
         },
         opts = {
             servers = {
                 lua_ls = {},
+            },
+            custom = {
+                {
+                    setup = function(config)
+                        require("typescript-tools").setup(config)
+                    end,
+                    config = {},
+                }
             },
         },
         config = function(_, opts)
@@ -32,11 +41,19 @@ return {
                 map("gr", require("telescope.builtin").lsp_references, "Goto References")
             end
 
-            for server, config in pairs(opts.servers) do
-                config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-                config.on_attach = on_attach
+            local function extend_config(config)
+                return vim.tbl_extend("force", config, {
+                    capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities),
+                    on_attach = on_attach,
+                })
+            end
 
-                lspconfig[server].setup(config)
+            for server, config in pairs(opts.servers) do
+                lspconfig[server].setup(extend_config(config))
+            end
+
+            for _, custom in pairs(opts.custom) do
+                custom.setup(extend_config(custom.config))
             end
         end,
     },
@@ -59,6 +76,8 @@ return {
             },
         },
     },
+
+    -- Lua
     {
         "folke/lazydev.nvim",
         ft = "lua",
@@ -68,6 +87,8 @@ return {
             },
         },
     },
+
+    -- Rust
     {
         "mrcjkb/rustaceanvim",
         lazy = false,
