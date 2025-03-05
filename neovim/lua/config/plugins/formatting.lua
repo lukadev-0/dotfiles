@@ -8,6 +8,8 @@ return {
                 typescript = { "prettierd" },
                 typescriptreact = { "prettierd" },
                 javascriptreact = { "prettierd" },
+                css = { "prettierd" },
+                html = { "prettierd" },
             },
             default_format_opts = {
                 lsp_format = "fallback",
