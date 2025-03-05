@@ -9,7 +9,10 @@ return {
             "williamboman/mason.nvim",
             "neovim/nvim-lspconfig",
             "saghen/blink.cmp",
-            "pmizio/typescript-tools.nvim",
+            {
+                "pmizio/typescript-tools.nvim",
+                dependencies = { "nvim-lua/plenary.nvim" },
+            },
         },
         opts = {
             servers = {
@@ -37,8 +40,8 @@ return {
 
                 map("<leader>cr", vim.lsp.buf.rename, "Rename")
                 map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
-                map("gd", require("telescope.builtin").lsp_definitions, "Goto Definition")
-                map("gr", require("telescope.builtin").lsp_references, "Goto References")
+                map("gd", Snacks.picker.lsp_definitions, "Goto Definition")
+                map("gr", Snacks.picker.lsp_references, "Goto References")
             end
 
             local function extend_config(config)
@@ -84,6 +87,8 @@ return {
         opts = {
             library = {
                 { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+                { path = "snacks.nvim", words = { "Snacks" } },
+                { path = "lazy.nvim", words = { "LazyVim" } },
             },
         },
     },

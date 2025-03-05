@@ -14,6 +14,7 @@ return {
                         MiniStatuslineFileinfo = { fg = colors.subtext1, bg = colors.surface0 },
                         SnacksIndent = { fg = colors.surface0 },
                         SnacksIndentScope = { fg = colors.surface2 },
+                        SnacksPicker = { fg = colors.text, bg = colors.none },
                         BlinkCmpDocSeparator = { fg = colors.surface1 },
                     }
                 end,

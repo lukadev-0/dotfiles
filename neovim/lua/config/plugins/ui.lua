@@ -14,49 +14,24 @@ return {
         },
     },
     {
-        "folke/noice.nvim",
-        event = "VeryLazy",
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            {
-                "rcarriga/nvim-notify",
-                opts = {
-                    on_open = function(win)
-                        vim.api.nvim_set_option_value("winblend", 0, { win = win })
-                    end,
-                },
-            },
+        "lewis6991/gitsigns.nvim",
+        opts = {},
+    },
+    {
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false,
+        -- stylua: ignore
+        keys = {
+            { "<leader><space>", function() Snacks.picker.files() end, desc = "Find files" },
+            { "<leader>fh", function() Snacks.picker.help() end, desc = "Telescope find help" },
         },
         opts = {
-            views = {
-                mini = {
-                    win_options = {
-                        winblend = 0,
-                    },
-                },
-                cmdline_popup = {
-                    win_options = {
-                        winblend = 0,
-                    },
-                },
-                notify = {
-                    win_options = {
-                        winblend = 0,
-                    },
-                },
-            },
-            lsp = {
-                signature = {
-                    enabled = false,
-                },
-            },
-            format = {
-                lsp_progress_done = {
-                    { "󰄬 ", hl_group = "NoiceLspProgressSpinner" },
-                    { "{data.progress.title} ", hl_group = "NoiceLspProgressTitle" },
-                    { "{data.progress.client} ", hl_group = "NoiceLspProgressClient" },
-                },
-            },
+            input = { enabled = true },
+            picker = { enabled = true },
+            indent = { enabled = true },
+            statuscolumn = { enabled = true },
+            notifier = { enabled = true },
         },
     },
 }
