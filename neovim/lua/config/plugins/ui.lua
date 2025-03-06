@@ -24,14 +24,31 @@ return {
         -- stylua: ignore
         keys = {
             { "<leader><space>", function() Snacks.picker.files() end, desc = "Find files" },
-            { "<leader>fh", function() Snacks.picker.help() end, desc = "Telescope find help" },
+            { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
+            { "<leader>fh", function() Snacks.picker.help() end, desc = "Find help" },
+            { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find config files" },
+            { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git diff" },
+            { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git status" },
+            { "<leader>e", function() Snacks.explorer() end, desc = "Explorer" }
         },
         opts = {
             input = { enabled = true },
-            picker = { enabled = true },
             indent = { enabled = true },
             statuscolumn = { enabled = true },
             notifier = { enabled = true },
+            explorer = { enabled = true },
+            picker = {
+                enabled = true,
+                sources = {
+                    explorer = {
+                        auto_close = true,
+                        layout = {
+                            preset = "sidebar",
+                            layout = { position = "right" },
+                        },
+                    },
+                },
+            },
         },
     },
 }
