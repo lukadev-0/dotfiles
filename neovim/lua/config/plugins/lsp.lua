@@ -25,6 +25,12 @@ return {
                     end,
                     config = {},
                 },
+                {
+                    setup = function(config)
+                        require("luau-lsp").setup(config)
+                    end,
+                    config = {},
+                },
             },
         },
         config = function(_, opts)
@@ -112,5 +118,13 @@ return {
     {
         "mrcjkb/rustaceanvim",
         lazy = false,
+    },
+
+    --- Luau
+    {
+        "lopi-py/luau-lsp.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
     },
 }
