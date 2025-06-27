@@ -4,14 +4,19 @@ return {
         opts = {},
     },
     {
-        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
         dependencies = {
             "williamboman/mason.nvim",
-            "neovim/nvim-lspconfig",
             "saghen/blink.cmp",
             {
                 "pmizio/typescript-tools.nvim",
                 dependencies = { "nvim-lua/plenary.nvim" },
+            },
+            {
+                "lopi-py/luau-lsp.nvim",
+                dependencies = {
+                    "nvim-lua/plenary.nvim",
+                },
             },
         },
         opts = {
@@ -27,16 +32,27 @@ return {
                 },
                 {
                     setup = function(config)
-                        require("luau-lsp").setup(config)
+                        local function rojo_project()
+                            return vim.fs.root(0, function(name)
+                                return name:match(".+%.project%.json$")
+                            end)
+                        end
+
+                        require("luau-lsp").setup({
+                            server = config,
+                            platform = {
+                                type = rojo_project() and "roblox" or "standard",
+                            },
+                            sourcemap = {
+                                enabled = rojo_project() ~= nil,
+                            },
+                        })
                     end,
                     config = {},
                 },
             },
         },
         config = function(_, opts)
-            require("mason").setup()
-            require("mason-lspconfig").setup()
-
             local lspconfig = require("lspconfig")
 
             local function on_attach(_, buf)
@@ -118,13 +134,5 @@ return {
     {
         "mrcjkb/rustaceanvim",
         lazy = false,
-    },
-
-    --- Luau
-    {
-        "lopi-py/luau-lsp.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
     },
 }
