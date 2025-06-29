@@ -7,6 +7,12 @@
     userEmail = "hi@lukadev.me";
     userName = "LukaDev";
 
+    signing = {
+      signByDefault = true;
+      format = "ssh";
+    };
+    extraConfig.gpg.ssh.defaultKeyCommand = "ssh-add -L | head -n1";
+
     delta = {
       enable = true;
       options = {

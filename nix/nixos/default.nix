@@ -1,7 +1,7 @@
 let
-  modules = {
+  extras = {
     nixos = {};
-    home = {};
+    home = import ../home/extras;
   };
 in
 
@@ -22,14 +22,14 @@ nixpkgs.lib.nixosSystem {
         imports = [
           ../home
           (home (args // {
-            modules = modules.home;
+            extras = extras.home;
             inherit pkgs;
           }))
         ];
       };
     }
     ({ pkgs, ... }@args: nixos (args // {
-      modules = modules.nixos;
+      extras = extras.nixos;
       inherit pkgs;
     }))
   ];

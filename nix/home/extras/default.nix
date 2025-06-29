@@ -1,0 +1,3 @@
+{
+  wslSshRelay = ./wslSshRelay.nix;
+}

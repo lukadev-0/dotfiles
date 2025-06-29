@@ -11,7 +11,11 @@
     wsl.defaultUser = system.user;
   };
 
-  home = { pkgs, ... }: {
+  home = { pkgs, extras, ... }: {
+    imports = [
+      extras.wslSshRelay
+    ];
+
     home.packages = with pkgs; [
       wslu
     ];
