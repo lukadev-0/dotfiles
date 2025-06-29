@@ -13,6 +13,11 @@
     };
     extraConfig.gpg.ssh.defaultKeyCommand = "ssh-add -L | head -n1";
 
+    extraConfig.init.defaultBranch = "main";
+    extraConfig.pull.rebase = true;
+    extraConfig.push.autoSetupRemote = true;
+    extraConfig.rerere.enabled = true;
+
     delta = {
       enable = true;
       options = {
