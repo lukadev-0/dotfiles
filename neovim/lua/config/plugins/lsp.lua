@@ -48,7 +48,17 @@ return {
                             },
                         })
                     end,
-                    config = {},
+                    config = {
+                        settings = {
+                            ["luau-lsp"] = {
+                                completion = {
+                                    imports = {
+                                        enabled = true,
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
             },
         },
