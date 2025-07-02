@@ -7,6 +7,7 @@
     prefix = "'C-\\'";
     baseIndex = 1;
     clock24 = true;
+    escapeTime = 0;
     sensibleOnTop = true;
     plugins = with pkgs; [
       tmuxPlugins.catppuccin
