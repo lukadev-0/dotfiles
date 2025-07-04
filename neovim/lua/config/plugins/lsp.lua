@@ -8,88 +8,27 @@ return {
         dependencies = {
             "williamboman/mason.nvim",
             "saghen/blink.cmp",
-            {
-                "pmizio/typescript-tools.nvim",
-                dependencies = { "nvim-lua/plenary.nvim" },
-            },
-            {
-                "lopi-py/luau-lsp.nvim",
-                dependencies = {
-                    "nvim-lua/plenary.nvim",
-                },
-            },
         },
-        opts = {
-            servers = {
-                lua_ls = {},
-            },
-            custom = {
-                {
-                    setup = function(config)
-                        require("typescript-tools").setup(config)
-                    end,
-                    config = {},
-                },
-                {
-                    setup = function(config)
-                        local function rojo_project()
-                            return vim.fs.root(0, function(name)
-                                return name:match(".+%.project%.json$")
-                            end)
-                        end
+        config = function()
+            vim.api.nvim_create_autocmd("LspAttach", {
+                callback = function(args)
+                    local function map(keys, fn, desc)
+                        vim.keymap.set("n", keys, fn, { buffer = args.buf, desc = "LSP: " .. desc })
+                    end
 
-                        require("luau-lsp").setup({
-                            server = config,
-                            platform = {
-                                type = rojo_project() and "roblox" or "standard",
-                            },
-                            sourcemap = {
-                                enabled = rojo_project() ~= nil,
-                            },
-                        })
-                    end,
-                    config = {
-                        settings = {
-                            ["luau-lsp"] = {
-                                completion = {
-                                    imports = {
-                                        enabled = true,
-                                    },
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-        config = function(_, opts)
-            local lspconfig = require("lspconfig")
+                    map("<leader>cr", vim.lsp.buf.rename, "Rename")
+                    map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
+                    map("gd", Snacks.picker.lsp_definitions, "Goto Definition")
+                    map("gr", Snacks.picker.lsp_references, "Goto References")
+                end,
+            })
 
-            local function on_attach(_, buf)
-                local function map(keys, fn, desc)
-                    vim.keymap.set("n", keys, fn, { buffer = buf, desc = "LSP: " .. desc })
-                end
+            vim.lsp.config("*", {
+                capabilities = require("blink.cmp").get_lsp_capabilities(),
+            })
 
-                map("<leader>cr", vim.lsp.buf.rename, "Rename")
-                map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
-                map("gd", Snacks.picker.lsp_definitions, "Goto Definition")
-                map("gr", Snacks.picker.lsp_references, "Goto References")
-            end
-
-            local function extend_config(config)
-                return vim.tbl_extend("force", config, {
-                    capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities),
-                    on_attach = on_attach,
-                })
-            end
-
-            for server, config in pairs(opts.servers) do
-                lspconfig[server].setup(extend_config(config))
-            end
-
-            for _, custom in pairs(opts.custom) do
-                custom.setup(extend_config(custom.config))
-            end
+            vim.lsp.enable("lua_ls")
+            vim.lsp.enable("ts_ls")
         end,
     },
     {
@@ -138,6 +77,30 @@ return {
                 { path = "lazy.nvim", words = { "LazyVim" } },
             },
         },
+    },
+
+    -- Luau
+    {
+        "lopi-py/luau-lsp.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        config = function()
+            local function rojo_project()
+                return vim.fs.root(0, function(name)
+                    return name:match(".+%.project%.json$")
+                end)
+            end
+
+            require("luau-lsp").setup({
+                platform = {
+                    type = rojo_project() and "roblox" or "standard",
+                },
+                sourcemap = {
+                    enabled = rojo_project() ~= nil,
+                },
+            })
+        end,
     },
 
     -- Rust
