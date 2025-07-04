@@ -1,6 +1,6 @@
 let
   extras = {
-    nixos = {};
+    nixos = import ./extras;
     home = import ../home/extras;
   };
 in

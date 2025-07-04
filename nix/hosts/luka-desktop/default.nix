@@ -2,8 +2,11 @@
   hostname = "luka-desktop";
   user = "luka";
 
-  nixos = { config, pkgs, system, ... }: {
-    imports = [ ./hardware.nix ];
+  nixos = { config, pkgs, system, extras, ... }: {
+    imports = [
+      ./hardware.nix
+      extras.ui
+    ];
 
     boot.loader.grub.device = "nodev";
     boot.loader.grub.efiSupport = true;
@@ -15,29 +18,20 @@
     networking.networkmanager.enable = true;
     networking.networkmanager.wifi.backend = "iwd";
 
+    hardware.bluetooth.enable = true;
+
     services.pipewire = {
       enable = true;
       pulse.enable = true;
     };
 
-    programs.hyprland.enable = true;
-    programs.firefox.enable = true;
-
-    users.users.${system.user}.packages = with pkgs; [
-      ghostty
-      wofi
-      nautilus
-    ];
-
     services.tailscale = {
       enable = true;
       useRoutingFeatures = "both";
     };
-
-    xdg.portal.enable = true;
-    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
   };
 
-  home = { ... }: {
+  home = { extras, ... }: {
+    imports = [ extras.ui ];
   };
 }
