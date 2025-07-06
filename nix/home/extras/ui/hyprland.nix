@@ -3,8 +3,12 @@
 {
   home.sessionVariables.NIXOS_OZONE_WL = "1";
 
+  services.hyprpolkitagent.enable = true;
+
   wayland.windowManager.hyprland = {
     enable = true;
+    package = null;
+    portalPackage = null;
     settings = {
       "$terminal" = "${pkgs.ghostty}/bin/ghostty";
       "$browser" = "${pkgs.firefox}/bin/firefox";
@@ -15,6 +19,10 @@
       misc = {
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
+      };
+
+      animations = {
+        enabled = false;
       };
 
       bind =
