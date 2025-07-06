@@ -8,6 +8,7 @@
     wl-clipboard
     pavucontrol
     gcr
+    vesktop
   ];
 
   services.gnome-keyring.enable = true;
