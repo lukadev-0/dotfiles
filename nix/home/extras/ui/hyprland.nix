@@ -16,14 +16,29 @@
       "$fileManager" = "${pkgs.nautilus}/bin/nautilus";
       "$mod" = "SUPER";
 
+      general = {
+        "col.inactive_border" = "rgba(108,112,134,0.5)";
+        "col.active_border" = "rgb(137,180,250)";
+      };
+
+      decoration = {
+        rounding = 8;
+      };
+
       misc = {
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
+        focus_on_activate = true;
       };
 
-      animations = {
-        enabled = false;
-      };
+      animation = [
+        "workspaces, 0"
+        "workspacesIn, 1, 3, default, slidefadevert 3%"
+        "windowsIn, 1, 3, default, popin 80%"
+        "windowsOut, 0"
+        "windowsMove, 1, 2, default, popin 80%"
+        "fade, 1, 2, default"
+      ];
 
       bind =
         [
