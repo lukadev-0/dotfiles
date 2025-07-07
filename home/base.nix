@@ -1,12 +1,11 @@
 { ... }:
-
 {
   imports = [
     ./bat.nix
     ./git.nix
     ./neovim.nix
     ./packages.nix
-    ./shell.nix
+    ./zsh.nix
     ./tmux.nix
   ];
 
