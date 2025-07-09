@@ -5,7 +5,7 @@
     { pkgs, inputs', ... }:
 
     let
-      inherit(inputs') ags;
+      inherit (inputs') ags;
 
       name = "luka-shell";
       entry = "src/main.tsx";

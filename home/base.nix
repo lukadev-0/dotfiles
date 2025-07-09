@@ -2,11 +2,13 @@
 {
   imports = [
     ./bat.nix
+    ./direnv.nix
     ./git.nix
     ./neovim.nix
     ./packages.nix
-    ./zsh.nix
+    ./starship.nix
     ./tmux.nix
+    ./zsh.nix
   ];
 
   home.sessionVariables = {
