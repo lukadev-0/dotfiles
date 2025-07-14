@@ -16,9 +16,14 @@
       "$fileManager" = "${pkgs.nautilus}/bin/nautilus";
       "$mod" = "SUPER";
 
+      exec-once = [
+        "luka-shell"
+      ];
+
       general = {
         "col.inactive_border" = "rgba(108,112,134,0.5)";
         "col.active_border" = "rgb(137,180,250)";
+        gaps_out = "20,20,20,5";
       };
 
       decoration = {

@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ self, inputs, ... }:
 
 {
   imports = [
@@ -7,7 +7,12 @@
 
   flake.homeModules = {
     base = ./base.nix;
-    with-ui = ./with/ui;
+    with-ui =
+      { pkgs, ... }:
+      {
+        imports = [ ./with/ui ];
+        home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.luka-shell ];
+      };
     with-wsl-ssh-relay = ./with/wsl-ssh-relay.nix;
   };
 }

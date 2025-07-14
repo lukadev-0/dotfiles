@@ -1,8 +1,14 @@
-import { Astal } from "ags/gtk4";
+import { createBinding, For } from "ags";
+import { Gdk, Gtk } from "ags/gtk4";
 import app from "ags/gtk4/app";
-import { createPoll } from "ags/time";
 import Gio from "gi://Gio?version=2.0";
 import System from "system";
+import GObject from "gi://GObject?version=2.0";
+
+import styles from "./styles/main.scss";
+
+import { Background } from "./background";
+import { Bar } from "./bar";
 
 const INSTANCE_NAME = "luka-shell";
 
@@ -19,20 +25,18 @@ if (ARGV.length > 0) {
   System.exit(proc.get_exit_status());
 }
 
+function main() {
+  eachMonitor((gdkmonitor) => <Background gdkmonitor={gdkmonitor} />);
+  eachMonitor((gdkmonitor) => <Bar gdkmonitor={gdkmonitor} />);
+}
+
+function eachMonitor(f: (monitor: Gdk.Monitor) => GObject.Object) {
+  const monitors = createBinding(app, "monitors");
+  return <For each={monitors}>{(monitor) => f(monitor)}</For>;
+}
+
 app.start({
   instanceName: INSTANCE_NAME,
-  main() {
-    const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
-    const clock = createPoll("", 1000, "date");
-
-    return (
-      <window
-        visible
-        exclusivity={Astal.Exclusivity.EXCLUSIVE}
-        anchor={TOP | LEFT | RIGHT}
-      >
-        <label label={clock} />
-      </window>
-    );
-  },
+  css: styles,
+  main,
 });

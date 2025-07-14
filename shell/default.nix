@@ -15,6 +15,7 @@
         pkgs.libsoup_3
         ags.packages.io
         ags.packages.astal4
+        ags.packages.hyprland
       ];
     in
     {
@@ -48,13 +49,13 @@
         '';
       };
 
-      devShells.shell = pkgs.mkShell {
+      devShells.luka-shell = pkgs.mkShell {
         buildInputs = [
           pkgs.just
           (ags.packages.default.override {
             inherit extraPackages;
           })
-        ];
+        ] ++ extraPackages;
       };
     };
 }
