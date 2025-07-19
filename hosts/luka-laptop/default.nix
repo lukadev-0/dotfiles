@@ -22,6 +22,11 @@
 
           wsl.enable = true;
           wsl.defaultUser = config.dotfiles.username;
+
+          services.tailscale = {
+            enable = true;
+            useRoutingFeatures = "both";
+          };
         }
       )
     ];
