@@ -5,5 +5,7 @@
     ripgrep
     rustup
     nodejs
+    bun
+    lune
   ];
 }
