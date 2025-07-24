@@ -10,6 +10,7 @@ return {
                 no_italic = true,
                 custom_highlights = function(colors)
                     return {
+                        FloatBorder = { bg = colors.none },
                         MiniStatuslineDevinfo = { fg = colors.subtext1, bg = colors.surface0 },
                         MiniStatuslineFileinfo = { fg = colors.subtext1, bg = colors.surface0 },
                         SnacksIndent = { fg = colors.surface0 },
