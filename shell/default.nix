@@ -55,7 +55,8 @@
           (ags.packages.default.override {
             inherit extraPackages;
           })
-        ] ++ extraPackages;
+        ]
+        ++ extraPackages;
       };
     };
 }
