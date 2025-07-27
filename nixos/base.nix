@@ -52,6 +52,10 @@ in
       enableSSHSupport = true;
     };
 
+    virtualisation.docker = {
+      enable = true;
+    };
+
     # System environment
     environment.variables = {
       EDITOR = "vim";
@@ -62,7 +66,10 @@ in
     # User
     users.users.${config.dotfiles.username} = {
       isNormalUser = true;
-      extraGroups = [ "wheel" ];
+      extraGroups = [
+        "wheel"
+        "docker"
+      ];
       shell = pkgs.zsh;
     };
 
