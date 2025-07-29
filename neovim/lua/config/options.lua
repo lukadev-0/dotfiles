@@ -15,20 +15,11 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.pumblend = 5
 vim.opt.winblend = 5
 
-vim.o.foldtext = ""
-vim.o.fillchars = "fold: "
-
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
         vim.highlight.on_yank()
-    end,
-})
-
-vim.api.nvim_create_autocmd("BufWinEnter", {
-    callback = function()
-        vim.cmd("normal zR")
     end,
 })
 
