@@ -12,8 +12,8 @@ vim.opt.signcolumn = "yes"
 
 vim.opt.scrolloff = 8
 vim.opt.clipboard = "unnamedplus"
-vim.opt.pumblend = 5
-vim.opt.winblend = 5
+vim.opt.pumblend = 10
+vim.opt.winblend = 10
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 

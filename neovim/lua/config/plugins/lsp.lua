@@ -52,6 +52,7 @@ return {
             },
         },
     },
+    -- FIXME: the window ain't transparent
     {
         "j-hui/fidget.nvim",
         opts = {

@@ -59,6 +59,9 @@ return {
                         },
                     },
                 },
+                layout = {
+                    preset = "ivy",
+                },
             },
         },
     },
