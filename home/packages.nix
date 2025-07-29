@@ -7,5 +7,6 @@
     nodejs
     bun
     lune
+    python3
   ];
 }
