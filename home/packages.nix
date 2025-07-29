@@ -2,11 +2,12 @@
 
 {
   home.packages = with pkgs; [
-    ripgrep
-    rustup
-    nodejs
     bun
     lune
+    nodejs
     python3
+    ripgrep
+    rustup
+    tree-sitter
   ];
 }
