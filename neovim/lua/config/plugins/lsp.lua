@@ -18,8 +18,6 @@ return {
 
                     map("<leader>cr", vim.lsp.buf.rename, "Rename")
                     map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
-                    map("gd", Snacks.picker.lsp_definitions, "Goto Definition")
-                    map("gr", Snacks.picker.lsp_references, "Goto References")
                 end,
             })
 
