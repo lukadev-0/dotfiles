@@ -7,16 +7,19 @@ return {
             require("catppuccin").setup({
                 flavour = "mocha",
                 transparent_background = not vim.g.neovide,
+                float = {
+                    transparent = false,
+                    solid = false,
+                },
                 no_italic = true,
                 custom_highlights = function(colors)
                     return {
-                        FloatBorder = { bg = colors.none },
-                        FloatTitle = { bg = colors.none },
                         MiniStatuslineDevinfo = { fg = colors.subtext1, bg = colors.surface0 },
                         MiniStatuslineFileinfo = { fg = colors.subtext1, bg = colors.surface0 },
-                        SnacksIndent = { fg = colors.surface0 },
-                        SnacksIndentScope = { fg = colors.surface2 },
                         SnacksPicker = { fg = colors.text, bg = colors.none },
+                        SnacksPickerBorder = { fg = colors.blue, bg = colors.none },
+                        SnacksPickerInput = { link = "SnacksPicker" },
+                        SnacksPickerTitle = { link = "SnacksPicker" },
                         BlinkCmpDocSeparator = { fg = colors.surface1 },
                     }
                 end,
@@ -27,7 +30,10 @@ return {
                     mason = true,
                     noice = true,
                     notify = true,
-                    snacks = true,
+                    snacks = {
+                        enabled = true,
+                        indent_scope_color = "surface2",
+                    },
                     which_key = true,
                 },
             })
