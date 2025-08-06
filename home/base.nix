@@ -6,6 +6,7 @@
     ./git.nix
     ./neovim.nix
     ./packages.nix
+    ./pesde.nix
     ./starship.nix
     ./tmux.nix
     ./zsh.nix

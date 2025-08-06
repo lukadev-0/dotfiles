@@ -47,10 +47,16 @@ in
       gcc
       file
       tree
+      jq
+      unzip
+      btop
     ];
 
     programs.zsh.enable = true;
-    programs.nix-ld.enable = true;
+    programs.nix-ld = {
+      enable = true;
+      libraries = with pkgs; [ dbus ];
+    };
     programs.mtr.enable = true;
     programs.gnupg.agent = {
       enable = true;
