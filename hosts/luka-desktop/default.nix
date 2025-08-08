@@ -15,11 +15,14 @@
           boot.loader.grub.efiSupport = true;
           boot.loader.grub.useOSProber = true;
           boot.loader.efi.canTouchEfiVariables = true;
+          boot.blacklistedKernelModules = [ "rtl8xxxu" ];
           boot.extraModulePackages = [ config.boot.kernelPackages.rtl8192eu ];
 
           networking.wireless.iwd.enable = true;
           networking.networkmanager.enable = true;
           networking.networkmanager.wifi.backend = "iwd";
+          services.resolved.enable = true;
+          networking.firewall.allowedUDPPorts = [ 5353 ];
 
           hardware.bluetooth.enable = true;
 
