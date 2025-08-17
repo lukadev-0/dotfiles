@@ -25,9 +25,8 @@ in
         };
       }
     ];
-    syntaxHighlighting = {
-      enable = true;
-    };
+    syntaxHighlighting.enable = true;
+    autosuggestion.enable = true;
     enableCompletion = true;
     localVariables = {
       HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND = "bg=${surface1},fg=${text}";
@@ -39,6 +38,10 @@ in
       bindkey '^[[B' history-substring-search-down
       bindkey '^[OA' history-substring-search-up
       bindkey '^[OB' history-substring-search-down
+
+      bindkey '^[[1;5C' forward-word
+
+      bindkey '^[[Z' reverse-menu-complete
       zstyle ':completion:*' menu select
 
       precmd() {
@@ -47,6 +50,9 @@ in
         else
           print ""
         fi
+
+        # Set the title
+        print -Pn "\e]0;%~\a"
       }
     '';
   };
