@@ -4,6 +4,7 @@
     ./bat.nix
     ./direnv.nix
     ./git.nix
+    ./mise.nix
     ./neovim.nix
     ./packages.nix
     ./pesde.nix
