@@ -1,8 +1,0 @@
-_default:
-  just --list
-
-run *args:
-  ags run src/main.tsx -- {{args}}
-
-gen-types *args:
-  ags types -d . {{args}}
