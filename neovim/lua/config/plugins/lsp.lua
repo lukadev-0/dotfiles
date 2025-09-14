@@ -25,12 +25,14 @@ return {
                 capabilities = require("blink.cmp").get_lsp_capabilities(),
             })
 
-            vim.lsp.enable("astro")
-            vim.lsp.enable("jsonls")
-            vim.lsp.enable("lua_ls")
-            vim.lsp.enable("pylsp")
-            vim.lsp.enable("svelte")
-            vim.lsp.enable("ts_ls")
+            vim.lsp.enable({
+                "astro",
+                "jsonls",
+                "lua_ls",
+                "pylsp",
+                "svelte",
+                "ts_ls",
+            })
         end,
     },
     {
