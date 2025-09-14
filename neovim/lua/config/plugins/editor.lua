@@ -1,14 +1,14 @@
 return {
     {
-        "echasnovski/mini.ai",
+        "nvim-mini/mini.ai",
         opts = {},
     },
     {
-        "echasnovski/mini.surround",
+        "nvim-mini/mini.surround",
         opts = {},
     },
     {
-        "echasnovski/mini.pairs",
+        "nvim-mini/mini.pairs",
         opts = {},
     },
 }

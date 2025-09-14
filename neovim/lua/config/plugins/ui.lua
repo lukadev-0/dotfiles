@@ -1,10 +1,10 @@
 return {
     {
-        "echasnovski/mini.statusline",
+        "nvim-mini/mini.statusline",
         opts = {},
     },
     {
-        "echasnovski/mini.icons",
+        "nvim-mini/mini.icons",
         opts = {
             default = {
                 directory = {
