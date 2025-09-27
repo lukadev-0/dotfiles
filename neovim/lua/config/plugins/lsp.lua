@@ -30,6 +30,7 @@ return {
                 "jsonls",
                 "lua_ls",
                 "pylsp",
+                "qmlls",
                 "svelte",
                 "ts_ls",
             })

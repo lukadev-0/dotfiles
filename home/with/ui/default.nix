@@ -4,7 +4,7 @@
   imports = [
     ./bitwarden.nix
     ./ghostty.nix
-    ./hyprland.nix
+    ./niri.nix
     ./packages.nix
     ./theme.nix
   ];
