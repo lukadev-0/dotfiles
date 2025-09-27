@@ -103,35 +103,60 @@ in
           accent_bg_color = colors.accent;
           accent_fg_color = colors.crust;
           window_bg_color = colors.mantle;
-          window_fg_color = colors.subtext1;
+          window_fg_color = colors.text;
           view_bg_color = colors.mantle;
-          view_fg_color = colors.subtext1;
+          view_fg_color = colors.text;
           headerbar_bg_color = colors.mantle;
           headerbar_fg_color = colors.text;
           headerbar_backdrop_color = colors.crust;
           popover_bg_color = colors.surface0;
           popover_fg_color = colors.text;
           dialog_bg_color = colors.base;
-          dialog_fg_color = colors.subtext1;
+          dialog_fg_color = colors.text;
           card_bg_color = colors.base;
-          card_fg_color = colors.subtext1;
+          card_fg_color = colors.text;
           sidebar_bg_color = colors.base;
-          sidebar_fg_color = colors.subtext1;
+          sidebar_fg_color = colors.text;
           sidebar_backdrop_color = colors.mantle;
         };
-      in
-      {
-        enable = true;
-        theme.name = "Adwaita-dark";
-        iconTheme.name = "Adwaita";
 
-        gtk4.extraCss =
-          lib.concatMapAttrsStringSep "\n" (name: color: "@define-color ${name} ${color};") gtkNamedColors + "\n" + ''
+        extraCss =
+          lib.concatMapAttrsStringSep "\n" (name: color: "@define-color ${name} ${color};") gtkNamedColors
+          + "\n"
+          + ''
             :root {
               --active-toggle-bg-color: ${colors.surface1};
               --active-toggle-fg-color: ${colors.text};
+            ${lib.concatMapAttrsStringSep "\n" (
+              name: _: "  --${lib.replaceString "_" "-" name}: @${name};"
+            ) gtkNamedColors}
+            }
+            window.message.dialog.csd:not(.solid-csd),
+            window.messagedialog.csd:not(.solid-csd) {
+              border-radius: 0;
+            }
+            toast {
+              background: ${colors.surface0};
+            }
+            banner {
+              --banner-color: ${colors.surface2};
             }
           '';
+      in
+      {
+        enable = true;
+        theme = {
+          package = pkgs.adw-gtk3;
+          name = "adw-gtk3-dark";
+        };
+        iconTheme.name = "Adwaita";
+
+        gtk4 = {
+          inherit extraCss;
+        };
+        gtk3 = {
+          inherit extraCss;
+        };
       };
   };
 }
