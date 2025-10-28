@@ -40,16 +40,17 @@ in
 
     # System packages
     environment.systemPackages = with pkgs; [
+      btop
+      curl
+      file
+      gcc
+      git
+      jq
+      kmod
+      tree
+      unzip
       vim
       wget
-      curl
-      git
-      gcc
-      file
-      tree
-      jq
-      unzip
-      btop
     ];
 
     programs.zsh.enable = true;
