@@ -1,28 +1,26 @@
 { pkgs, ... }:
 
+let
+  sshKeys = import ../ssh-keys.nix;
+in
 {
   programs.git = {
     enable = true;
 
-    userEmail = "hi@lukadev.me";
-    userName = "LukaDev";
+    settings = {
+      user.email = "hi@lukadev.me";
+      user.name = "LukaDev";
+
+      init.defaultBranch = "main";
+      pull.rebase = true;
+      push.autoSetupRemote = true;
+      rerere.enabled = true;
+    };
 
     signing = {
       signByDefault = true;
       format = "ssh";
-    };
-    extraConfig.gpg.ssh.defaultKeyCommand = "ssh-add -L | head -n1";
-
-    extraConfig.init.defaultBranch = "main";
-    extraConfig.pull.rebase = true;
-    extraConfig.push.autoSetupRemote = true;
-    extraConfig.rerere.enabled = true;
-
-    delta = {
-      enable = true;
-      options = {
-        features = "catppuccin-mocha";
-      };
+      key = sshKeys.me;
     };
 
     includes = [
@@ -37,6 +35,14 @@
           + "/catppuccin.gitconfig";
       }
     ];
+  };
+
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options = {
+      features = "catppuccin-mocha";
+    };
   };
 
   programs.gh = {
