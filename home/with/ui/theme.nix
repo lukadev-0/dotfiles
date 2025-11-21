@@ -59,12 +59,12 @@ in
 
   config = {
     home.packages = with pkgs; [
+      dejavu_fonts
+      inter
+      nerd-fonts.jetbrains-mono
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
-      dejavu_fonts
-      geist-font
-      nerd-fonts.geist-mono
       twitter-color-emoji
     ];
 
@@ -72,8 +72,8 @@ in
       enable = true;
       defaultFonts = {
         emoji = [ "Twitter Color Emoji" ];
-        sansSerif = [ "Geist" ];
-        monospace = [ "GeistMono Nerd Font" ];
+        sansSerif = [ "Inter" ];
+        monospace = [ "JetBrainsMono Nerd Font" ];
       };
     };
 

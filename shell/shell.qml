@@ -3,13 +3,12 @@ import QtQuick
 
 PanelWindow {
     anchors {
+        top: true
         left: true
         bottom: true
         right: true
     }
+    aboveWindows: false
 
-    Text {
-        anchors.centerIn: parent
-        text: "Hello!"
-    }
+    color: "black"
 }

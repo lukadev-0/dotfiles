@@ -16,6 +16,7 @@ in
     layout {
       gaps 16
       center-focused-column "never"
+      background-color "${colors.crust}"
 
       preset-column-widths {
         proportion 0.33333
@@ -26,7 +27,7 @@ in
       default-column-width { proportion 0.5; }
 
       focus-ring {
-        width 2
+        width 1
         active-color "${colors.accent}"
         inactive-color "${colors.overlay0}"
       }
@@ -43,6 +44,27 @@ in
         spread 0
         offset y=2
       }
+
+      insert-hint {
+        color "${colors.accent}"
+      }
+
+      struts {
+        top 16
+        bottom 16
+        left 16
+        right 16
+      }
+    }
+
+    overview {
+      backdrop-color "${colors.mantle}"
+      workspace-shadow {
+        softness 0
+        offset x=0 y=0
+        spread 2
+        color "${colors.base}"
+      }
     }
 
     hotkey-overlay {
@@ -52,6 +74,11 @@ in
     window-rule {
       geometry-corner-radius 12
       clip-to-geometry true
+    }
+
+    window-rule {
+      match app-id=r#"^Bitwarden$"#
+      block-out-from "screencast"
     }
 
     prefer-no-csd
