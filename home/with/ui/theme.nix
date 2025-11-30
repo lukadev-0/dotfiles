@@ -83,6 +83,10 @@ in
       size = 24;
     };
 
+    xdg.configFile."colors.json" = {
+      text = builtins.toJSON colors;
+    };
+
     dconf.settings = {
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
