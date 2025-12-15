@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     bun
     cachix
+    deno
     just
     lune
     nodejs
