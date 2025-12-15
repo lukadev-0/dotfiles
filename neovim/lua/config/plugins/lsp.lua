@@ -27,6 +27,7 @@ return {
 
             vim.lsp.enable({
                 "astro",
+                "denols",
                 "gopls",
                 "jsonls",
                 "lua_ls",

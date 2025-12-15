@@ -7,4 +7,5 @@
     VISUAL = "nvim";
   };
   xdg.configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/neovim";
+  xdg.dataFile."nvim/luka/typescript".source = pkgs.typescript + "/lib/node_modules/typescript";
 }
