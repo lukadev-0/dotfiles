@@ -27,11 +27,10 @@ return {
 
             vim.lsp.enable({
                 "astro",
-                "denols",
+                -- "denols",
                 "gopls",
                 "jsonls",
                 "lua_ls",
-                "pylsp",
                 "qmlls",
                 "svelte",
                 "ts_ls",

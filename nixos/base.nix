@@ -41,12 +41,16 @@ in
     # System packages
     environment.systemPackages = with pkgs; [
       btop
+      cmake
       curl
       file
       gcc
       git
+      gnumake
       jq
       kmod
+      meson
+      ninja
       tree
       unzip
       vim
