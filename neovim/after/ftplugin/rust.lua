@@ -1,3 +1,6 @@
+vim.opt_local.tabstop = 4
+vim.opt_local.shiftwidth = 4
+
 -- disable autopairs for ' in rust since they're used in lifetimes
 vim.keymap.set("i", "'", "'", { buffer = true })
 
