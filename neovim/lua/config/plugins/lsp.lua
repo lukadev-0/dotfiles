@@ -27,13 +27,13 @@ return {
 
             vim.lsp.enable({
                 "astro",
-                -- "denols",
+                "denols",
                 "gopls",
                 "jsonls",
                 "lua_ls",
                 "qmlls",
                 "svelte",
-                "ts_ls",
+                -- "ts_ls",
             })
         end,
     },
@@ -105,6 +105,9 @@ return {
                 },
                 sourcemap = {
                     enabled = rojo_project() ~= nil,
+                },
+                fflags = {
+                    enable_new_solver = true,
                 },
             })
         end,

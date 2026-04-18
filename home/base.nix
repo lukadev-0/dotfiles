@@ -8,6 +8,7 @@
     ./neovim.nix
     ./packages.nix
     ./pesde.nix
+    ./sccache.nix
     ./starship.nix
     ./tmux.nix
     ./zsh.nix

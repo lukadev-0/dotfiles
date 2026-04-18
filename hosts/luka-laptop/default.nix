@@ -12,12 +12,6 @@
           dotfiles.hostname = "luka-laptop";
           dotfiles.homeModules = [
             self.homeModules.with-wsl-ssh-relay
-            (
-              { pkgs, ... }:
-              {
-                home.packages = with pkgs; [ wslu ];
-              }
-            )
           ];
 
           wsl.enable = true;

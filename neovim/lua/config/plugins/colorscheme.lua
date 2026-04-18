@@ -38,17 +38,7 @@ return {
                 },
             })
 
-            vim.cmd([[colorscheme catppuccin]])
-
-            -- Highlights horizontal rulers in rendered markdown in LSP hover docs.
-            vim.api.nvim_create_autocmd("BufWinEnter", {
-                pattern = "*",
-                callback = function()
-                    if vim.bo.filetype == "markdown" then
-                        vim.fn.matchadd("WinSeparator", "^─\\+$")
-                    end
-                end,
-            })
+            vim.cmd([[colorscheme catppuccin-nvim]])
 
             if vim.g.neovide then
                 vim.g.neovide_title_background_color =

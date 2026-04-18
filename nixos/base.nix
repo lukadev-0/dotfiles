@@ -51,6 +51,7 @@ in
       kmod
       meson
       ninja
+      nixfmt
       tree
       unzip
       vim

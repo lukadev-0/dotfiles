@@ -11,6 +11,7 @@ return {
                 javascriptreact = { "prettierd" },
                 css = { "prettierd" },
                 -- html = { "prettierd" },
+                nix = { "nixfmt" },
             },
             default_format_opts = {
                 lsp_format = "fallback",

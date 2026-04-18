@@ -22,6 +22,6 @@ require("lazy").setup({
     spec = {
         { import = "config.plugins" },
     },
-    install = { colorscheme = { "catppuccin", "default" } },
+    install = { colorscheme = { "catppuccin-nvim", "catppuccin", "default" } },
     checker = { enabled = true },
 })
