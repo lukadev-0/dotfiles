@@ -1,0 +1,13 @@
+{ ... }:
+{
+  imports = [
+    ../gui
+    ../tailscale
+  ];
+
+  nixos = {
+    networking.networkmanager.enable = true;
+    services.resolved.enable = true;
+    hardware.bluetooth.enable = true;
+  };
+}

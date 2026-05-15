@@ -1,42 +1,29 @@
-{ self, inputs, ... }:
-
+{ ... }:
 {
-  flake.nixosConfigurations.luka-desktop = inputs.nixpkgs.lib.nixosSystem {
-    modules = [
-      self.nixosModules.base
-      self.nixosModules.with-ui
-      ./hardware.nix
-      (
-        { config, ... }:
-        {
-          dotfiles.hostname = "luka-desktop";
+  imports = [ ../../modules/presets/pc.nix ];
 
-          boot.loader.grub.device = "nodev";
-          boot.loader.grub.efiSupport = true;
-          boot.loader.grub.useOSProber = true;
-          boot.loader.efi.canTouchEfiVariables = true;
-          boot.blacklistedKernelModules = [ "rtl8xxxu" ];
-          boot.extraModulePackages = [ config.boot.kernelPackages.rtl8192eu ];
+  hostname = "luka-desktop";
 
-          networking.wireless.iwd.enable = true;
-          networking.networkmanager.enable = true;
-          networking.networkmanager.wifi.backend = "iwd";
-          services.resolved.enable = true;
-          networking.firewall.allowedUDPPorts = [ 5353 ];
+  nixos = {
+    imports = [ ./hardware.nix ];
 
-          hardware.bluetooth.enable = true;
+    boot.loader.limine = {
+      enable = true;
+      extraEntries = ''
+        /Windows
+          protocol: efi
+          path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
+      '';
+      style = {
+        wallpapers = [ ];
+      };
+    };
+    boot.loader.efi.canTouchEfiVariables = true;
 
-          services.pipewire = {
-            enable = true;
-            pulse.enable = true;
-          };
+    # boot.loader.grub.device = "nodev";
+    # boot.loader.grub.efiSupport = true;
+    # boot.loader.grub.useOSProber = true;
 
-          services.tailscale = {
-            enable = true;
-            useRoutingFeatures = "both";
-          };
-        }
-      )
-    ];
+    networking.networkmanager.wifi.backend = "iwd";
   };
 }

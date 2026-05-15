@@ -1,0 +1,80 @@
+.box-wrapper {
+  --padding: 12px;
+  --window-outline: 1px solid alpha(var(--colors-overlay1), 0.2);
+  background: alpha(var(--colors-surface0), 0.9);
+  border: var(--window-outline);
+  border-radius: 20px;
+}
+
+.input {
+  padding: 0 12px;
+  min-height: 40px;
+}
+
+.search-container {
+  padding: var(--padding);
+}
+
+.scroll {
+  margin-top: -10px;
+  border-top: var(--window-outline);
+  border-bottom: var(--window-outline);
+}
+
+.list {
+  background: none;
+  padding: var(--padding);
+}
+
+.keybinds {
+  padding: var(--padding);
+  margin-top: -20px;
+  background: alpha(var(--colors-surface2), 0.15);
+  font-size: 12px;
+}
+
+.keybind-button {
+  padding: 0 6px;
+  font-weight: 600;
+  border-radius: 4px;
+  background: alpha(var(--colors-overlay0), 0.3);
+  border: 1px solid alpha(var(--colors-overlay1), 0.15);
+}
+
+.keybind-button:hover {
+  background: alpha(var(--colors-overlay0), 0.5);
+}
+
+.keybind-bind {
+  color: var(--colors-subtext1);
+}
+
+.item-box {
+  padding: 8px;
+  min-height: 36px;
+}
+
+.item-text {
+  line-height: 1;
+}
+
+.item-subtext {
+  color: var(--colors-subtext1);
+  font-size: 12px;
+}
+
+.item-quick-activation {
+  background: alpha(var(--colors-overlay1), 0.2);
+  border: 1px solid alpha(var(--colors-overlay1), 0.15);
+  font-size: 12px;
+  font-weight: 700;
+  font-family: monospace;
+  color: var(--colors-subtext1);
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+child:selected,
+row:selected {
+  background: alpha(var(--colors-overlay1), 0.15);
+}

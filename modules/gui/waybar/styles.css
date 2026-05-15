@@ -1,0 +1,17 @@
+window#waybar {
+  background: alpha(@crust, 0.7);
+  border-right: 1px solid alpha(@overlay1, 0.1);
+  font-size: 12px;
+}
+
+window#waybar > box {
+  padding: 32px 0;
+}
+
+window#waybar label {
+  text-shadow: 0 1px 2px @base;
+}
+
+#clock {
+  font-feature-settings: "tnum";
+}

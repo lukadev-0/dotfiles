@@ -5,9 +5,6 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,6 +13,10 @@
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    evergarden-bat = {
+      url = "git+https://codeberg.org/evergarden/bat";
+      flake = false;
+    };
     evergarden-tmux = {
       url = "git+https://codeberg.org/evergarden/tmux";
       flake = false;
@@ -23,21 +24,40 @@
   };
 
   outputs =
-    inputs@{ flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [
-        ./home
-        ./hosts
-        ./nixos
-        ./shell
-      ];
-      systems = [
-        "x86_64-linux"
-      ];
-      perSystem =
-        { pkgs, ... }:
-        {
-          formatter = pkgs.nixfmt-tree;
-        };
+    inputs@{ nixpkgs, ... }:
+    let
+      inherit (nixpkgs.lib)
+        evalModules
+        mkOption
+        nixosSystem
+        types
+        ;
+
+      mkNixos =
+        module:
+        (evalModules {
+          modules = [
+            ./modules/base
+            ({ config, ... }: {
+              options.eval.nixos = mkOption { type = types.raw; };
+              config = {
+                eval.nixos = nixosSystem {
+                  modules = [ config.nixos ];
+                };
+
+                _module.args = {
+                  inherit (config.eval.nixos) pkgs;
+                };
+              };
+            })
+            module
+          ];
+          specialArgs = {
+            inherit inputs;
+          };
+        }).config.eval.nixos;
+    in
+    {
+      nixosConfigurations.luka-desktop = mkNixos (import ./hosts/luka-desktop);
     };
 }
