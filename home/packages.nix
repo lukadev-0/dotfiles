@@ -8,6 +8,7 @@
     just
     lune
     nodejs
+    pnpm
     python3
     ripgrep
     rustup
