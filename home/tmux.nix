@@ -10,10 +10,17 @@
     escapeTime = 0;
     sensibleOnTop = true;
     terminal = "tmux-256color";
-    plugins = with pkgs; [
-      tmuxPlugins.catppuccin
-      tmuxPlugins.yank
-    ];
+    plugins =
+      let
+        inherit (pkgs) tmuxPlugins;
+      in
+      [
+        tmuxPlugins.yank
+        {
+          plugin = tmuxPlugins.evergarden;
+          extraConfig = "set -gq @evergarden_variant 'winter'";
+        }
+      ];
     extraConfig = ''
       set-option -a terminal-features ',xterm*:RGB'
       set-option -g renumber-windows on

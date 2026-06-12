@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "evergarden-tmux": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1773782608,
+        "narHash": "sha256-JayKR1UEW+1xe+n9Bk23buwGAockBdyIeJmf63B8Qrs=",
+        "ref": "refs/heads/main",
+        "rev": "57126e28cb711cb6857860d7722ffa6693d29b6b",
+        "revCount": 14,
+        "type": "git",
+        "url": "https://codeberg.org/evergarden/tmux"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/evergarden/tmux"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -41,11 +57,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780099287,
-        "narHash": "sha256-efIPwVGtIWIjWcznhaop6XN6HxnOL8800hF6CBNvlqQ=",
+        "lastModified": 1781189114,
+        "narHash": "sha256-5inaamLgUMWy+MOBE9ChF9QAF1o/74LFuHkI0W/9rqc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "7d8127d308c3fb9664f7e643eec944be74ebb37d",
+        "rev": "486595d2cf49cfcd649b58a284fa11ac0e34da22",
         "type": "github"
       },
       "original": {
@@ -62,11 +78,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777732699,
-        "narHash": "sha256-2uX/XtOWZ/oy2rerRynVhqVA//ZXZ3Fo60PikLHEPQc=",
+        "lastModified": 1781182279,
+        "narHash": "sha256-V5EQQbDnmdiXGQXrEF1PEL7QYsFqfH8N1E89Z5ONwFk=",
         "owner": "nix-community",
         "repo": "NixOS-WSL",
-        "rev": "5482f113fd31ebac131d1ebeb2ae90bf0d5e41f5",
+        "rev": "5675822ba756e6e56f8f6a5a76e90e0da2ece94d",
         "type": "github"
       },
       "original": {
@@ -78,11 +94,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1779560665,
-        "narHash": "sha256-tpyBcxPpcQb8ukyNF7DoCwfSY3VPsxHoYwj00Cayv5o=",
+        "lastModified": 1781074563,
+        "narHash": "sha256-md8WlXOlfnIeHeOScMTTHFyf2d6iaTwPl2apR5EQ3P4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+        "rev": "9ae611a455b90cf061d8f332b977e387bda8e1ca",
         "type": "github"
       },
       "original": {
@@ -109,6 +125,7 @@
     },
     "root": {
       "inputs": {
+        "evergarden-tmux": "evergarden-tmux",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "nixos-wsl": "nixos-wsl",

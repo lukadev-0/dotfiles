@@ -16,6 +16,10 @@
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    evergarden-tmux = {
+      url = "git+https://codeberg.org/evergarden/tmux";
+      flake = false;
+    };
   };
 
   outputs =
