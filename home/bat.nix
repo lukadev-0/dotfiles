@@ -4,18 +4,18 @@
   programs.bat = {
     enable = true;
     themes = {
-      "Catppuccin Mocha" = {
-        src = pkgs.fetchFromGitHub {
-          owner = "catppuccin";
+      "Evergarden" = {
+        src = pkgs.fetchFromCodeberg {
+          owner = "evergarden";
           repo = "bat";
-          rev = "699f60fc8ec434574ca7451b444b880430319941";
-          sha256 = "sha256-6fWoCH90IGumAMc4buLRWL0N61op+AuMNN9CAR9/OdI";
+          rev = "aa5b92e927d1169673050f4f444496590e053487";
+          hash = "sha256-Q5ljWahEQcK6GfK1Pj2gXyWoFzVuBBFoW3INxUfKfuk=";
         };
-        file = "themes/Catppuccin Mocha.tmTheme";
+        file = "themes/evergarden-winter.tmTheme";
       };
     };
     config = {
-      theme = "Catppuccin Mocha";
+      theme = "Evergarden";
     };
   };
 }

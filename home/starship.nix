@@ -77,7 +77,7 @@ in
         renamed = " ";
         deleted = " ";
         style = "bold yellow";
-        format = "$conflicted[( $ahead_behind)](bold #fab387)[$deleted$renamed$modified$typechanged$staged$untracked$stashed]($style)";
+        format = "$conflicted[( $ahead_behind)](bold #f7a182)[$deleted$renamed$modified$typechanged$staged$untracked$stashed]($style)";
       };
 
       git_state = {

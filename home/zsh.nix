@@ -1,9 +1,9 @@
 { pkgs, ... }:
 
 let
-  red = "#f38ba8";
-  text = "#cdd6f4";
-  surface1 = "#45475a";
+  red = "#f57f82";
+  text = "#f8f9e8";
+  surface1 = "#374145";
   error = red;
 in
 {
@@ -21,7 +21,7 @@ in
           owner = "zsh-users";
           repo = "zsh-history-substring-search";
           rev = "87ce96b1862928d84b1afe7c173316614b30e301";
-          sha256 = "sha256-1+w0AeVJtu1EK5iNVwk3loenFuIyVlQmlw8TWliHZGI=";
+          hash = "sha256-1+w0AeVJtu1EK5iNVwk3loenFuIyVlQmlw8TWliHZGI=";
         };
       }
     ];
