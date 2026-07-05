@@ -1,3 +1,1 @@
-require("nvim-treesitter").install({ "nix" }):await(function()
-	vim.treesitter.start()
-end)
+require("config.treesitter").ensure({ "nix" })

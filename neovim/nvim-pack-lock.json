@@ -24,6 +24,10 @@
       "rev": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d",
       "src": "https://github.com/folke/lazydev.nvim"
     },
+    "luau-lsp.nvim": {
+      "rev": "97c4f400bbdd3b70016b06d99b585be310ae5864",
+      "src": "https://github.com/lopi-py/luau-lsp.nvim"
+    },
     "mini.ai": {
       "rev": "4511b3481707c1d021485475d34f2ed2a50bf47b",
       "src": "https://github.com/nvim-mini/mini.ai"
@@ -59,6 +63,10 @@
     "oil.nvim": {
       "rev": "b73018b75affd13fa38e2fc94ef753b465f770d7",
       "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "rustaceanvim": {
+      "rev": "d216efd4e24c67224355d19c2fc642561c32f6cf",
+      "src": "https://github.com/mrcjkb/rustaceanvim"
     },
     "snacks.nvim": {
       "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",

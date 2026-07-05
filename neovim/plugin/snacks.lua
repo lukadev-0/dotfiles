@@ -18,5 +18,6 @@ vim.keymap.set("n", "<leader>fc", function()
 	snacks.picker.files({ cwd = vim.fn.stdpath("config") })
 end, { desc = "Notification History" })
 vim.keymap.set("n", "<leader>fh", snacks.picker.help, { desc = "Help pages" })
+vim.keymap.set("n", "<leader>fs", snacks.picker.lsp_workspace_symbols, { desc = "Workspace symbols" })
 
 vim.keymap.set("n", "<leader>gb", snacks.gitbrowse.open, { desc = "Open in browser (Git)" })

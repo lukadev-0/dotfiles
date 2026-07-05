@@ -1,3 +1,1 @@
-require("nvim-treesitter").install({ "bash" }):await(function()
-	vim.treesitter.start()
-end)
+require("config.treesitter").ensure({ "bash" })

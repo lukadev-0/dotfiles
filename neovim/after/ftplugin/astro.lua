@@ -1,3 +1,1 @@
-require("nvim-treesitter").install({ "astro", "typescript", "javascript" }):await(function()
-	vim.treesitter.start()
-end)
+require("config.treesitter").ensure({ "astro", "typescript", "javascript" })

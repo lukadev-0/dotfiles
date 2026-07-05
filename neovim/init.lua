@@ -17,6 +17,8 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/wakatime/vim-wakatime" },
+	{ src = "https://github.com/mrcjkb/rustaceanvim" },
+	{ src = "https://github.com/lopi-py/luau-lsp.nvim" },
 })
 
 vim.g.mapleader = " "
