@@ -35,29 +35,39 @@
 
       mkNixos =
         module:
-        (evalModules {
-          modules = [
-            ./modules/base
-            ({ config, ... }: {
-              options.eval.nixos = mkOption { type = types.raw; };
-              config = {
-                eval.nixos = nixosSystem {
-                  modules = [ config.nixos ];
-                };
-
-                _module.args = {
-                  inherit (config.eval.nixos) pkgs;
-                };
+        let
+          nixosEvalModule = { config, ... }: {
+            options = {
+              eval.nixos = mkOption { type = types.raw; };
+            };
+            config = {
+              eval.nixos = nixosSystem {
+                modules = [ config.nixos ];
               };
-            })
-            module
-          ];
-          specialArgs = {
-            inherit inputs;
+
+              _module.args = {
+                inherit (config.eval.nixos) pkgs;
+              };
+            };
           };
-        }).config.eval.nixos;
+
+          evaluation = evalModules {
+            modules = [
+              ./modules/base
+              nixosEvalModule
+              module
+            ];
+            specialArgs = {
+              inherit inputs;
+            };
+          };
+        in
+        evaluation.config.eval.nixos;
     in
     {
-      nixosConfigurations.luka-desktop = mkNixos (import ./hosts/luka-desktop);
+      nixosConfigurations = {
+        luka-desktop = mkNixos (import ./hosts/luka-desktop);
+        luka-laptop = mkNixos (import ./hosts/luka-laptop);
+      };
     };
 }

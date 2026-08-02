@@ -110,6 +110,8 @@ in
   config = {
     colors = mkDefault (colors // mapAttrs (_: color: cfgColors.${color}) aliases // extra);
 
+    nixos.programs.dconf.enable = true;
+
     home = {
       xdg.configFile."colors.json" = {
         text = toJSON cfgColors;
