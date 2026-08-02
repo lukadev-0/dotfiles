@@ -36,6 +36,7 @@
     prettier
     tailwindcss-language-server
     typescript-language-server
+    svelte-language-server
 
     # Lua/Luau
     lua-language-server

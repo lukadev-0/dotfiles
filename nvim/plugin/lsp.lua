@@ -2,6 +2,7 @@ vim.lsp.enable({
 	"astro",
 	"denols",
 	"lua_ls",
+	"svelte",
 	"tailwindcss",
 	"ts_ls",
 })
