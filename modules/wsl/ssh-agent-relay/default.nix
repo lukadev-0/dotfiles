@@ -6,7 +6,7 @@ let
 in
 {
   home = {
-    home.sessionVariables.SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/${socketName}";
+    home.sessionVariables.SSH_AUTH_SOCK = "\${XDG_RUNTIME_DIR%/}/${socketName}";
 
     systemd.user.sockets.wsl-ssh-agent-relay = {
       Unit.Description = "Socket for WSL SSH Agent Relay";
