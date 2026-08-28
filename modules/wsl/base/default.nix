@@ -1,7 +1,13 @@
-{ config, inputs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 let
   inherit (config) username;
   inherit (inputs) nixos-wsl;
+  windows-terminal-terminfo = pkgs.callPackage ./windows-terminal-terminfo.nix { };
 in
 {
   nixos = {
@@ -10,5 +16,6 @@ in
       enable = true;
       defaultUser = username;
     };
+    environment.systemPackages = [ windows-terminal-terminfo ];
   };
 }

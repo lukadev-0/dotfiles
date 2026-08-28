@@ -12,6 +12,7 @@ in
     ./man-pages.nix
     ./mise.nix
     ./neovim.nix
+    ./nh.nix
     ./nix-ld.nix
     ./nix.nix
     ./nixos.nix
@@ -22,6 +23,7 @@ in
     ./tmux.nix
     ./tools.nix
     ./user.nix
+    ./zellij.nix
   ];
 
   options = {

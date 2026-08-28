@@ -1,0 +1,4 @@
+windows-terminal|Windows Terminal,
+    use=xterm-256color,
+    Tc,
+    Smulx=\E[4:%p1%dm,

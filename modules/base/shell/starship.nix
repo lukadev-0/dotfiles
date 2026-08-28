@@ -20,7 +20,6 @@ in
 {
   home.programs.starship = {
     enable = true;
-    enableZshIntegration = true;
     settings = {
       format = ''
         $username$hostname$directory(${concatModules leftModules})$fill${concatModules rightModules}
